@@ -1,0 +1,38 @@
+body{
+    width: 1200px;
+    margin: 0 auto;
+}
+header{
+    background-color: aquamarine;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(1fr, 3);
+    grid-template-areas: 
+        "logo . . . info"
+        "logo header header header info"
+        "logo . . . info";
+}
+header img{
+    grid-area: logo;
+    width: 122px;
+}
+header h1 {
+    grid-area: header;
+    margin: 20px auto;
+}
+header div {
+    grid-area: info;
+}
+nav{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+nav a {
+    text-decoration: none;
+    background-color: aquamarine;
+    border-radius: 20px;
+    padding: 10px;
+    color: black;
+}

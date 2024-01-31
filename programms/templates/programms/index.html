@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock title %}
+
+{% block content %}
+    {% for programm in listProgramms %}
+       <div class="programm">
+           <h2>{{ programm.nameProgramm }}</h2>
+
+            <p>{{ programm.bodyProgramm }}</p>
+       </div>
+   {% endfor %}    
+{% endblock content %}
