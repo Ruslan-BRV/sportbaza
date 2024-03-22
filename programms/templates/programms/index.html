@@ -1,13 +1,25 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Главная{% endblock title %}
+{% block css %}{% static "css/index.css" %}{% endblock css %}
+{% block title %}Программы{% endblock title %}
 
 {% block content %}
-    {% for programm in listProgramms %}
-       <div class="programm">
-           <h2>{{ programm.nameProgramm }}</h2>
-
+    <div class="conteiner-cards">
+        {% for programm in listProgramms %}
+        <div class="card conteiner-card" style="width: 18rem;">
+            <img src="{{ programm.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body overflow-auto">
+                <h5 class="card-title">{{ programm.nameProgramm }}</h5>
+                <p class="card-text overflow-auto">{{ programm.bodyProgramm }}</p>
+                <a href="#" class="btn btn-primary">Подробнее о программе</a>
+            </div>
+        </div>
+        {% comment %} <div class="programm">
+            <h2>{{ programm.nameProgramm }}</h2>
             <p>{{ programm.bodyProgramm }}</p>
-       </div>
-   {% endfor %}    
+            <img src="{{ programm.image.url }}" alt="нет картинки">
+        </div> {% endcomment %}
+        {% endfor %}    
+    </div>
 {% endblock content %}

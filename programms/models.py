@@ -18,6 +18,8 @@ class Programms (models.Model):
 
     bodyProgramm = models.TextField(verbose_name="Программа тренировок")
 
+    image = models.ImageField(verbose_name="Изображение", upload_to="imageProgramms/", null=True)
+
     typeProgramm = models.ForeignKey(
         TypeProgramms,
         verbose_name="тип программы",

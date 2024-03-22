@@ -1,0 +1,11 @@
+.conteiner-cards {
+    display: flex;
+    padding: 10px;
+}
+
+/* .conteiner-cards div {
+    height: 100px !important;
+} */
+.conteiner-card {
+    height: 36rem;
+}

@@ -1,38 +1,45 @@
-body{
-    width: 1200px;
-    margin: 0 auto;
+@font-face {
+    font-family: 'header';
+    src: url(../fonts/header);
 }
-header{
-    background-color: aquamarine;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(1fr, 3);
-    grid-template-areas: 
-        "logo . . . info"
-        "logo header header header info"
-        "logo . . . info";
+header img {
+    max-width: 70px;
+    margin-left: 1%;
 }
-header img{
-    grid-area: logo;
-    width: 122px;
+header {
+    position: relative;
 }
 header h1 {
-    grid-area: header;
-    margin: 20px auto;
+    position: absolute;
+    /* right: 43%;
+    bottom: 10%; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* margin: auto; */
+    font-family: 'header';
+    font-style: italic;
+    text-align: center;
 }
-header div {
-    grid-area: info;
+nav li {
+    padding: 0 !important;
+    margin-right: 5px !important;
 }
-nav{
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+footer {
+    margin: 0 auto !important;
+    max-width: 1320px !important;
+    padding: 20px;
 }
-nav a {
-    text-decoration: none;
-    background-color: aquamarine;
-    border-radius: 20px;
-    padding: 10px;
-    color: black;
+footer div {
+    text-align: center;
+}
+.header-max {
+    margin: 0 auto !important;
+    max-width: 1320px !important;
+}
+.content {
+    margin-top: 128px;
+    height: 60rem !important;
+    overflow: auto;
 }

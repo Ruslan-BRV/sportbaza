@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}{% static "css/nnews.css" %}{% endblock css %}
+{% block title %}Новости{% endblock title %}
+
+{% block content %}
+    <div class="allNews">
+        {% for news_one in news %}
+            <div class="news">
+                <h2>{{ news_one.title }}</h2>
+                <img src="{{ news_one.image.url }}" alt="картинка">
+                <p>{{ news_one.bodyNews }}</p>
+            </div>
+           {% endfor %}
+    </div>   
+{% endblock content %}

@@ -10,4 +10,4 @@ def newsPage(request):
         "news": news
     }
 
-    return render(request, "news/index.html", context=context)
+    return render(request, "news/news.html", context=context)
