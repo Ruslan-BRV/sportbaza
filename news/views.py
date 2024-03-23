@@ -5,7 +5,7 @@ from news.models import News
 
 def newsPage(request):
     news = News.objects.all()
-
+    
     context = {
         "news": news
     }

@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 # Create your models here.
@@ -9,6 +10,8 @@ class News(models.Model):
     image = models.ImageField(verbose_name="Изображение", upload_to="imageNews/", null=True)
     like = models.IntegerField(verbose_name="лайк", default=0)
     dizlike = models.IntegerField(verbose_name="дизлайк", default=0)
+    upload_date = models.DateTimeField(verbose_name="дата загрузки", auto_now_add=True, db_column='upload_date')
+    
     class Meta:
         verbose_name="Новость"
         verbose_name_plural="Новости"

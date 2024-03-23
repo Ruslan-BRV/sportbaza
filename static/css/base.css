@@ -38,8 +38,7 @@ footer div {
     margin: 0 auto !important;
     max-width: 1320px !important;
 }
-.content {
-    margin-top: 128px;
-    height: 60rem !important;
-    overflow: auto;
+.news-content{
+    padding-top: 10px;
+    background-color: aqua;
 }
