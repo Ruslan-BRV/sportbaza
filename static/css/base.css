@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'header';
-    src: url(../fonts/header);
+    src: url(../fonts/header.ttf);
 }
 header img {
     max-width: 70px;

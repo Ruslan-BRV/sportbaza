@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static "css/index.css" %}">{% endblock css %}
+{% block title %}{{programm.typeProgramm}}{% endblock title %}
+
+{% block content %}
+<div class="pt-2">
+        <div class="card mx-auto mb-3" style="max-width: 860px;">
+            <div class="row g-0">
+                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                    <div class="p-3">
+                        <img class="w-100" src="{{ programm.image.url }}" alt="картинка">
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ programm.nameProgramm }}</h5>
+                        <p class="card-text">{{ programm.bodyProgramm }}</p>
+                    </div>
+                </div>
+                <div class="d-grid"><a href="{% url "programms" %}" class="btn btn-outline-secondary">Назад</a></div>
+            </div>
+        </div>
+</div>   
+{% endblock content %}

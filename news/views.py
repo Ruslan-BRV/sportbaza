@@ -11,3 +11,4 @@ def newsPage(request):
     }
 
     return render(request, "news/news.html", context=context)
+

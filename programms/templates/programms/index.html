@@ -1,25 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block css %}{% static "css/index.css" %}{% endblock css %}
+{% block css %}<link rel="stylesheet" href="{% static "css/index.css" %}">{% endblock css %}
 {% block title %}Программы{% endblock title %}
 
 {% block content %}
-    <div class="conteiner-cards">
-        {% for programm in listProgramms %}
-        <div class="card conteiner-card" style="width: 18rem;">
-            <img src="{{ programm.image.url }}" class="card-img-top" alt="...">
-            <div class="card-body overflow-auto">
-                <h5 class="card-title">{{ programm.nameProgramm }}</h5>
-                <p class="card-text overflow-auto">{{ programm.bodyProgramm }}</p>
-                <a href="#" class="btn btn-primary">Подробнее о программе</a>
+    <div class="d-flex justify-content-around flex-wrap text-center">
+        {% for programm in list_programms %}
+        <div class="align-self-center m-2">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ programm.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ programm.nameProgramm }}</h5>
+                    <p class="card-text">{{ programm.bodyProgramm|truncatechars:100 }}</p>
+                    <a href="{% url "detail_programm" programm.id %}" class="btn btn-secondary">Подробнее о программе</a>
+                </div>
             </div>
         </div>
-        {% comment %} <div class="programm">
-            <h2>{{ programm.nameProgramm }}</h2>
-            <p>{{ programm.bodyProgramm }}</p>
-            <img src="{{ programm.image.url }}" alt="нет картинки">
-        </div> {% endcomment %}
         {% endfor %}    
     </div>
 {% endblock content %}
