@@ -1,12 +1,18 @@
 from django.shortcuts import get_object_or_404, render
-from programms.models import Programms
+from programms.models import Programms, TypeProgramms
 # Create your views here.
 
 def main_page(request):
-    list_programms = Programms.objects.all()
+    type_list = TypeProgramms.objects.all()
+    type = request.GET.get('type', 'full')
+    if type == 'full':
+        list_programms = Programms.objects.all()
+    else:
+        list_programms = Programms.objects.filter(typeProgramm=f'{type}')
 
     context = {
-        "list_programms": list_programms
+        "list_programms": list_programms,
+        "type_list": type_list
     }
 
     return render(request, "programms/index.html", context=context)
