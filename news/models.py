@@ -15,5 +15,10 @@ class News(models.Model):
         verbose_name="Новость"
         verbose_name_plural="Новости"
 
+    def bodyNew(self):
+        # return self.bodyProgramm[:50] + "..."
+        return u"%s..." % (self.bodyNews[:50],)
+    bodyNew.short_description = 'Новость'
+
     def __str__(self):
         return self.title
