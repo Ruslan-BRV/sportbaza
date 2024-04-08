@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,16 @@ INSTALLED_APPS = [
     'programms',
     'news'
 ]
+
+JAZZMIN_SETTINGS ={
+    'site_title': 'MaxFit',
+    'site header': 'MaxFit',
+}
+
+JAZZMIN_UI_TWEAKS = {
+    'theme': 'cyborg',
+    'user_theme': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
