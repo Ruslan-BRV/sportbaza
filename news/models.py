@@ -22,3 +22,16 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Comment(models.Model):
+    author = models.TextField(verbose_name='автор', max_length=30)
+    comment_news = models.TextField(verbose_name='Сообщение')
+    date_comment = models.DateTimeField(verbose_name='Дата комментария', auto_now_add=True,)
+    novosti = models.ForeignKey(News, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name="Комментарий"
+        verbose_name_plural="Комментарии"
+
+    def __str__(self):
+        return self.author
