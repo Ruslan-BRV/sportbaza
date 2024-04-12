@@ -2,3 +2,6 @@
 /venv
 .pylintrc
 .gitignore
+news/__pycache__/
+programms/__pycache__/
+sportbaza/__pycache__/
