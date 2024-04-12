@@ -25,15 +25,11 @@
                             <i class="bi bi-chat-right-text"></i>
                             Обсудить
                         </a>
-                        <div class="btn btn-light" type="submit" name="click" value="like">
+                        <div class="btn btn-light like" type="submit" name="click" value="{{news_one.id}}" id="{{news_one.id}}" onClick="like({{news_one.id}});">
                             <i class="bi bi-hand-thumbs-up"></i>{{ news_one.like }}
                         </div>
-                        <div class="btn btn-light">
+                        <div class="btn btn-light" type="submit" name="click" value="{{news_one.id}}" id="{{news_one.id}}" onClick="diz({{news_one.id}});">
                             <i class="bi bi-hand-thumbs-down"></i>{{ news_one.dizlike }}
-                                                  {% comment %} <i class="bi bi-eye"></i> {{ card.views }}
-                                               <i class="bi bi-star-fill"></i> {{ card.adds }} {% endcomment %}
-                                               <!-- Кнопка детального представления -->
-                                               {% comment %} <a href="{% url 'detail_card_by_id' card.id %}" class="btn btn-dark btn-sm" role="button">Подробнее</a> {% endcomment %}
                         </div>
                     </div>
                 </div>
