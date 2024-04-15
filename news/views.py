@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from news.forms import NewsCommentForm
+from news.forms import NewsCommentForm, RegistrationForm
 from news.models import News, Comment
 
 from django.shortcuts import get_object_or_404, render
@@ -57,3 +57,16 @@ def addDizlike(request, news_id):
     }
 
     return render(request, "news/news.html", context)  
+
+def regUser(request):
+    if request.method == "POST":
+        form = RegistrationForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            form = RegistrationForm()
+    else:
+        form = RegistrationForm()
+    context = {
+        "form": form,
+    }
+    return render(request, "news/registration.html", context=context)

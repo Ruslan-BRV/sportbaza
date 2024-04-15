@@ -35,3 +35,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.author
+    
+class Users(models.Model):
+    username = models.CharField(verbose_name="Логин", max_length=30)
+    password = models.CharField(verbose_name="Пароль", max_length=30)
+    email = models.EmailField(verbose_name="E-mail", max_length=200, unique=True, null=True, blank=True)
+    first_name = models.CharField(verbose_name="Имя", max_length=30, null=True, blank=True)
+    last_name = models.CharField(verbose_name="Фамилия", max_length=30, null=True, blank=True)
+    phone = models.CharField(verbose_name="Телефон", max_length=20, null=True, blank=True)
+    image = models.ImageField(verbose_name="Изображение", upload_to="imageUsers/", null=True, blank=True)
+    date = models.DateTimeField(verbose_name="Дата регистрации", auto_now_add=True, db_column='date')
+
+    class Meta:
+        verbose_name="Пользователь"
+        verbose_name_plural="Пользователи"
+    
+    def __str__(self):
+        return self.username

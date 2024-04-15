@@ -1,5 +1,5 @@
 from django.contrib import admin
-from news.models import News, Comment
+from news.models import News, Comment, Users
 
 # Register your models here.
 # admin.site.register(News)
@@ -14,4 +14,8 @@ class NewsAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Users)
+class UserAdmin(admin.ModelAdmin):
     pass
