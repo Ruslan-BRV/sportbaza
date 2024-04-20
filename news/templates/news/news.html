@@ -3,10 +3,56 @@
 
 {% block css %}<link rel="stylesheet" href="{% static "news/css/news.css" %}" />{% endblock css %}
 {% block title %}Новости{% endblock title %}
-
+{% block head %}
+<style>
+    /* Стили для темной темы пагинации */
+    .pagination-dark .page-link {
+        background-color: #343a40; /* Темный фон для ссылок */
+        color: #ffffff; /* Белый текст */
+    }
+    .pagination-dark .page-link:hover {
+        background-color: #495057; /* Светлее при наведении */
+    }
+    .pagination-dark .page-item.active .page-link {
+      background-color: #212529 !important; /* Очень темный фон для активной ссылки */
+      border-color: #212529 !important; /* Очень темный бордюр для активной ссылки */
+    }
+    .pagination-dark .page-item.active .page-link:hover {
+        background-color: #32383e !important; /* Немного светлее цвет фона при наведении */
+        border-color: #32383e !important; /* Цвет границы при наведении */
+    }
+    /* Стили для радиокнопок */
+    .form-check-input:checked {
+        background-color: #212529 !important; /* Очень темный фон для активной радиокнопки */
+        border-color: #212529 !important; /* Очень темный бордюр для активной радиокнопки */
+    }
+</style>
+{% endblock head %}
 {% block content %}
     <div class="pt-2">
-    {% for news_one in news %}
+        <div class="row">
+            <div class="col-12">
+    
+                <nav aria-label="Page navigation" class="text-dark">
+                    <ul class="pagination pagination-dark">
+                      {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link text-white bg-secondary" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a></li>
+                      {% endif %}
+                  {% for num in page_obj.paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                      <a class="page-link text-white bg-secondary" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                  {% endfor %}
+                  
+                  {% if page_obj.has_next %}
+                  <li class="page-item"><a class="page-link text-white bg-secondary" href="?page={{ page_obj.next_page_number }}">Следующая</a></li>
+                  {% endif %}
+                  
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+    {% for news_one in page_obj %}
         <div class="card mx-auto mb-3 border-0 shadow" style="max-width: 1080px;">
             <div class="row g-0">
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
@@ -93,74 +139,6 @@
         </div> {% endcomment %}
        {% endfor %}
     </div>
-    <div class="d-flex justify-content-around flex-wrap text-center">
-        {% for news_one in news %}
-        <div class="align-self-center m-1 shadow">
-            <div class="card p-2" style="width: 38rem;">
-                <img src="{{ news_one.image.url }}" class="card-img-top mx-auto" style="width: 30rem;" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ news_one.title }}</h5>
-                    <p class="card-text">{{ news_one.bodyNews|truncatechars:200 }}</p>
-                    {% comment %} <a href="{% url "detail_programm" programm.id %}" class="btn btn-secondary">Подробнее</a> {% endcomment %}
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-2 p-2">
-                    <small class="text-muted">Дата загрузки: {{ news_one.upload_date }}</small>
-                    <div>
-                        {% comment %} <form>
-                            <button type="submit" name="click" value="like"><i class="bi bi-hand-thumbs-up"></i>{{ news_one.like }}</button>
-                        </form> {% endcomment %}
-                        <a class="btn btn-light icon-link text-secondary-emphasis link-underline link-underline-opacity-0" data-bs-toggle="collapse" href="#{{news_one.id}}collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <i class="bi bi-chat-right-text"></i>
-                            Обсудить
-                        </a>
-                        <div class="btn btn-light like" type="submit" name="click" value="{{news_one.id}}" id="{{news_one.id}}" onClick="like({{news_one.id}});">
-                            <i class="bi bi-hand-thumbs-up"></i>{{ news_one.like }}
-                        </div>
-                        <div class="btn btn-light" type="submit" name="click" value="{{news_one.id}}" id="{{news_one.id}}" onClick="diz({{news_one.id}});">
-                            <i class="bi bi-hand-thumbs-down"></i>{{ news_one.dizlike }}
-                        </div>
-                    </div>
-                </div>
-                    <div class="collapse" id="{{news_one.id}}collapseExample">
-                        <div class="card card-body">
-                            <div class="overflow-y-scroll commentNews">
-                                {% for comment in comments %}
-                                    {% if comment.novosti_id == news_one.id %}
-                                        <div class="alert alert-success d-flex">
-                                            <div class="align-self-center m-3">
-                                                {{comment.author}}:
-                                            </div>
-                                            <div>
-                                                {{comment.comment_news}}
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                            <form method="post" class='mt-3'>
-                                {% csrf_token %}
-                                {% for field in form %}
-                                <div class="mb-3">
-                                    {{ field }}
-                                    {% if field.errors %}
-                                    <div class="alert alert-danger mt-1">{{ field.errors.as_text }}</div>
-                                    {% endif %}
-                                </div>
-                                {% endfor %}
-                                <div class="mb-3">
-                                    {% if form.non_field_errors %}
-                                    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
-                                    {% endif %}
-                                </div>
-                                <input type="hidden", name="novosti", value="{{news_one.id}}">
-                                <button type="submit" class="btn btn-dark">Отправить</button>
-                            </form>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                
-                {% endfor %}    
-            </div>   
+       
 {% endblock content %}
 {% block script %}<script src="{% static "news/js/news.js" %}?v=2"></script>{% endblock script %}

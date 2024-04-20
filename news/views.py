@@ -1,12 +1,36 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.urls import reverse, reverse_lazy
 from news.forms import NewsCommentForm, RegistrationForm
 from news.models import News, Comment
-
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, FormMixin
 from django.shortcuts import get_object_or_404, render
 from news.models import News
 from django.db.models import F
 # Create your views here.
 
+
+class NewsPage(FormMixin, ListView):
+    model = News
+    template_name = "news/news.html"
+    context_object_name = "news"
+    paginate_by = 3
+    form_class = NewsCommentForm
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            form = NewsCommentForm()
+        # return HttpResponseRedirect(reverse('news'))
+        return redirect(request.META.get('HTTP_REFERER'))
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['news'] = News.objects.all()
+        context['comments'] = Comment.objects.all()
+        return context
+    
 def newsPage(request):
     if request.method == "POST":
         form = NewsCommentForm(request.POST)
