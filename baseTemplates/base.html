@@ -13,7 +13,7 @@
     {% block head %}{% endblock head %}
 </head>
 <body>
-  <div class="container-fluid bg-primary-subtle shadow-sm">
+  <div class="container-fluid bg-primary-subtle shadow-sm sticky-top">
     <div class="header-max">
       <header class="bg-primary-subtle">
         <img src="{% static 'img/logo.ico' %}" alt="">
@@ -57,7 +57,25 @@
                   <a class="nav-link disabled">Отключенная</a>
                 </li> {% endcomment %}
               </ul>
-              <a href="/registration/" class="btn btn-outline-light shadow-sm text-uppercase link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Зарегистрироваться</a>
+              <ul class="navbar-nav"> <!-- Элементы правой части без выравнивания по левому краю -->
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="btn btn-outline-light shadow-sm link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="#">Привет, {{ user.username }}!</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-outline-light shadow-sm link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'users:logout' %}">Выйти</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="btn btn-outline-light shadow-sm link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'users:login' %}">Войти</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-outline-light shadow-sm link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'users:signup' %}">Регистрация</a>
+                </li>
+                {% endif %}
+              </ul>
+
+              
               {% comment %} <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
                 <button class="btn btn-outline-success" type="submit">Поиск</button>

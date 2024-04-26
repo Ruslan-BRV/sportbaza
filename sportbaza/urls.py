@@ -15,6 +15,7 @@ urlpatterns = [
     path("", include("news.urls")),
     path("calculator/", include("calculator.urls")),
     path("registration/", regUser),
+    path('users/', include('users.urls', namespace='users')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'calculator',
     'programms',
-    'news'
+    'news',
+    'users',
 ]
 
 JAZZMIN_SETTINGS ={

@@ -15,7 +15,7 @@ class NewsPage(FormMixin, ListView):
     model = News
     template_name = "news/news.html"
     context_object_name = "news"
-    paginate_by = 3
+    paginate_by = 4
     form_class = NewsCommentForm
 
     def post(self, request, *args, **kwargs):

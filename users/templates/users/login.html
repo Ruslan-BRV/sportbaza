@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Аутентификация{% endblock title %}
+
+{% block content %}
+<div class="container mt-2 mb-2">
+    <h2>Вход в систему</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-dark">Войти</button>
+    </form>
+</div>
+{% endblock content %}
