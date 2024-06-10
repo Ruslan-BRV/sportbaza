@@ -1025,6 +1025,24 @@
   }
 },
 {
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$hm8z5uojDTILb26s2M4TyG$0s8D26eT8Ba5Rdj+aAOQ0YFUFv/MUv9OCqvaFnuA9bI=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "adminRus",
+    "first_name": "",
+    "last_name": "",
+    "email": "ruslan10897@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-06-10T11:39:08.552Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "contenttypes.contenttype",
   "pk": 1,
   "fields": {
