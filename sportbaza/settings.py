@@ -30,7 +30,7 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['ruslan-brv-sportbaza-885a.twc1.net']
 
-
+CSRF_TRUSTED_ORIGINS = ['ruslan-brv-sportbaza-885a.twc1.net']
 # Application definition
 
 INSTALLED_APPS = [
