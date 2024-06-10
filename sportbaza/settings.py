@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['ruslan-brv-sportbaza-885a.twc1.net']
+ALLOWED_HOSTS = ['ruslan-brv-sportbaza-885a.twc1.net', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = ['https://ruslan-brv-sportbaza-885a.twc1.net']
 # Application definition
