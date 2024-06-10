@@ -4,7 +4,24 @@ from django.urls import reverse, reverse_lazy
 from users.forms import LoginUserForm, RegisterUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import CreateView, TemplateView
+from django.contrib.auth.views import LoginView, LogoutView
 # Create your views here.
+
+
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'users/login.html'
+    extra_context = {'title': 'Авторизация'}
+    redirect_field_name = 'next'
+
+    def get_success_url(self):
+        if self.request.POST.get('next', '').strip():
+            return self.request.POST.get('next')
+        return reverse_lazy('catalog')
+    
+class LogoutUser(LogoutView):
+    next_page = reverse_lazy('users:login')
+    
 
 def login_user(request):
     if request.method == 'POST':
