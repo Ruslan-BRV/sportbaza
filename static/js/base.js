@@ -6,3 +6,10 @@ window.addEventListener('scroll', function () {
         headerNew.classList.remove("scroll-header-full");
     }
 });
+(() => {
+    const scrollBtn = document.querySelector('.scroll-btn');
+    window.addEventListener('scroll', e => {
+        window.scrollY >= 200 ? scrollBtn.style.display = "flex" : scrollBtn.style.display = "none"
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo(0,0))
+})();
