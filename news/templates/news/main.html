@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static "news/css/news.css" %}" />{% endblock css %}
+{% block title %}Новости{% endblock title %}
+{% block head %}
+
+{% endblock head %}
+{% block title_h1 %}Хватит быть слабым{% endblock title_h1 %}
+{% block header_span %}Делитесь планами тренировок и питания в один клик и отслеживайте прогресс своих клиентов с помощью единой удобной платформы{% endblock header_span %}
+{% block content %}
+    <div class="block-1">
+        <div class="wrapper-text">
+            <div class="name-block div-text">Индивидуальный подход к каждому клиенту</div>
+            <div class="div-text">
+                Составьте план тренировок по уже имеющимся <a href="/programms/">программам</a>
+            </div>
+            <div class="div-text">Для составления плана питания вам помогут готовые <a href="/foot/">рационы и рецепты</a></div>
+        </div>
+        <div class="wrapper-img"><img src="/static/img/ind_podhod.png" alt="Индивидуальный подход" title="Индивидуальный подход"></div>
+    </div>
+    <div class="block-1">
+        <div class="wrapper-img"><img src="/static/img/laifhack.png" alt="Индивидуальный подход" title="Индивидуальный подход"></div>
+        <div class="wrapper-text">
+            <div class="name-block div-text">Подчеркните свой профессионализм</div>
+            <div class="div-text">
+                Делитесь полезной информацией и лайфхаками в разделе <a href="/news/">новостей</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block script %}<script src="{% static "news/js/news.js" %}?v=2"></script>{% endblock script %}

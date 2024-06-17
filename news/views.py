@@ -8,9 +8,11 @@ from django.views.generic.edit import CreateView, FormMixin
 from django.shortcuts import get_object_or_404, render
 from news.models import News
 from django.db.models import F
+from django.views.generic import TemplateView
 # Create your views here.
 
-
+class IndexView(TemplateView):
+    template_name = 'news/main.html'  
 class NewsPage(FormMixin, ListView):
     model = News
     template_name = "news/news.html"
