@@ -85,7 +85,12 @@ footer div {
     flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 50px
-
+}
+.block-2 {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 20px;
+    margin-bottom: 50px
 }
 .wrapper-img{
     flex: 1 0 280px;
