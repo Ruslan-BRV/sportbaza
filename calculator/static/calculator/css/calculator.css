@@ -4,3 +4,6 @@ input {
 select {
     max-width: 300px !important;
 }
+.input-gap {
+    gap: 10px !important;
+}

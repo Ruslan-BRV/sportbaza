@@ -13,3 +13,13 @@ window.addEventListener('scroll', function () {
     });
     scrollBtn.addEventListener('click', () => window.scrollTo(0,0))
 })();
+
+(() => {
+    const a = document.querySelector(".tpwidget");
+    if (a) {
+        const b = a.querySelector(".tpwidget__button"), c = a.querySelector(".tpwidget__list");
+        b.addEventListener("click", () => {
+            b.classList.toggle("tpwidget__button--open"), c.classList.toggle("tpwidget__list--open")
+        })
+    }
+})();

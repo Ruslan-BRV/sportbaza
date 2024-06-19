@@ -3,7 +3,8 @@
 
 {% block css %}<link rel="stylesheet" href="{% static "css/index.css" %}">{% endblock css %}
 {% block title %}{{programm.typeProgramm}}{% endblock title %}
-
+{% block title_h1 %}Программы тренировок{% endblock title_h1 %}
+{% block header_span %}{{ programm.nameProgramm }}{% endblock header_span %}
 {% block content %}
 <div class="pt-2">
         <div class="card mx-auto mb-3" style="max-width: 860px;">
