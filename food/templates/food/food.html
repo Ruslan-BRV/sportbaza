@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static "food/css/food.css" %}" />{% endblock css %}
+{% block title %}Правильное питание{% endblock title %}
+{% block title_h1 %}Правильное питание - залог успеха!{% endblock title_h1 %}
+{% block header_span %}От правильно составленного рациона питания зависит многое {% endblock header_span %}
+{% block content %}
+<div class="food-news">
+    <h2>Основные правила питания</h2>
+    <div>
+        <div class="text-food">Основное правило правильного питания — полноценное и разнообразное меню. Сегодня на полках в супермаркете есть большой выбор продуктов, из которых можно приготовить вкусные и полезные блюда. Еда должна быть свежеприготовленной, без большого количества приправ и масла.</div>
+        <div class="text-food">Правильно питание во время тренировок — это не изнурительная диета с ограниченным меню. Это четко сбалансированная система, где каждый продукт приносит пользу. Кроме этого, в первое время можно делать дни отдыха и позволять себя любимые «вредные» продукты.</div>
+        <h4>Следует исключить:</h4>
+        <div>
+            <ul>
+                <li>мучное, белую выпечку;</li>
+                <li>сахар и сахаросодержащие продукты;</li>
+                <li>фастфуд, чипсы, сухарики;</li>
+                <li>газированные напитки, пакетированные соки;</li>
+                <li>майонез, кетчуп;</li>
+                <li>копчености и колбасы;</li>
+                <li>полуфабрикаты;</li>
+                <li>алкоголь.</li>
+            </ul>
+        </div>
+        <h3>Что такое КБЖУ и как его рассчитать:</h3>
+        <div class="wrapper-img-kbzu-full">
+            <div class="wrapper-img-kbzu"><img class="img-kbzu" src="{% static "food/img/massa.png" %}" alt="КБЖУ" title="КБЖУ"></div>
+            <div class="wrapper-img-kbzu"><img class="img-kbzu" src="{% static "food/img/norma.png" %}" alt="КБЖУ" title="КБЖУ"></div>
+            <div class="wrapper-img-kbzu"><img class="img-kbzu" src="{% static "food/img/pohudenie.png" %}" alt="КБЖУ" title="КБЖУ"></div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}{% endblock script %}

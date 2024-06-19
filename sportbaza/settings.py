@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'programms',
     'news',
     'users',
+    'food',
 ]
 
 JAZZMIN_SETTINGS ={
